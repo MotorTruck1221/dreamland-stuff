@@ -4,7 +4,10 @@
   "description": "Create a Dreamland app with all the stuffs setup",
   "main": "index.js",
   "scripts": {
-      "publish": "npm publish --access public"
+    "types": "tsc --declaration --emitDeclarationOnly --outDir dist/ --declarationMap",
+    "type-check": "tsc --noEmit",
+    "build": "babel src/ --out-dir dist/ --extensions '.ts'",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",
@@ -21,5 +24,12 @@
   "bugs": {
     "url": "https://github.com/motortruck1221/dreamland-stuff/issues"
   },
-  "homepage": "https://github.com/motortruck1221/dreamland-stuff#readme"
+  "homepage": "https://github.com/motortruck1221/dreamland-stuff#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.24.5",
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-typescript": "^7.24.1",
+    "typescript": "^5.4.5"
+  }
 }
