@@ -1,7 +1,8 @@
-export default function dreamlandPlugin() {
+import type { Plugin, UserConfig } from 'vite'
+function dreamlandPlugin(): Plugin {
     return {
         name: 'vite-plugin-dreamland',
-        config(config) {
+        config(config: UserConfig) {
             config.esbuild = config.esbuild || {}
             config.esbuild.jsxFactory = 'h'
             config.esbuild.jsxFragment = 'Fragment'
@@ -9,6 +10,10 @@ export default function dreamlandPlugin() {
     }
 }
 //maintain backwards compat
-export default function dreamlandVite() {
+function dreamlandVite(): Plugin {
     return dreamlandPlugin()
 }
+
+//export both as default
+export default dreamlandPlugin
+export { dreamlandVite }
