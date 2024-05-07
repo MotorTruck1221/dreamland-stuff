@@ -13,11 +13,13 @@ npm install -d vite-plugin-dreamland
 ```javascript
 // vite.config.js
 import { defineConfig } from 'vite';
-import dreamlandVite from 'vite-plugin-dreamland';
+import dreamlandPlugin from 'vite-plugin-dreamland';
 
 export default defineConfig({
-    plugins: [dreamlandVite()]
+    plugins: [dreamlandPlugin()]
 });
 ```
+> [!NOTE]
+> You can continue to use `dreamlandVite()` if you used it before.
 
 Licensed under the [MIT License](./LICENSE).
