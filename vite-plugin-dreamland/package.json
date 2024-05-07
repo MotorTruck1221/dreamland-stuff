@@ -4,6 +4,9 @@
   "description": "A simple Vite plugin for dreamland.js",
   "main": "index.js",
   "type": "module",
+  "scripts": {
+      "publish": "npm publish --access public"
+  },
   "keywords": [
     "vite",
     "plugin",

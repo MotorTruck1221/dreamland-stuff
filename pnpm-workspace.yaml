@@ -1,0 +1,3 @@
+packages:
+  - "create-dreamland-app"
+  - "vite-plugin-dreamland"
