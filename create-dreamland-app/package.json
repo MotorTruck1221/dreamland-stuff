@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Create a Dreamland app with all the stuffs setup",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "types": "tsc --declaration --emitDeclarationOnly --outDir dist/ --declarationMap",
     "type-check": "tsc --noEmit",

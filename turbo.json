@@ -1,8 +1,15 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
+    "type-check": {
+        "dependsOn": ["^type-check"]
+    },
+    "types": {
+        "dependsOn": ["^types", "type-check"],
+        "outputs": ["dist"]
+    },
     "build": {
-        "dependsOn": ["^build"],
+        "dependsOn": ["^build", "types"],
         "outputs": ["dist"]
     },
     "publish": {
