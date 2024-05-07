@@ -19,7 +19,23 @@ importers:
         specifier: ^1.13.3
         version: 1.13.3
 
-  create-dreamland-app: {}
+  create-dreamland-app:
+    devDependencies:
+      '@babel/cli':
+        specifier: ^7.24.5
+        version: 7.24.5(@babel/core@7.24.5)
+      '@babel/core':
+        specifier: ^7.24.5
+        version: 7.24.5
+      '@babel/preset-env':
+        specifier: ^7.24.5
+        version: 7.24.5(@babel/core@7.24.5)
+      '@babel/preset-typescript':
+        specifier: ^7.24.1
+        version: 7.24.1(@babel/core@7.24.5)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
 
   vite-plugin-dreamland:
     devDependencies:

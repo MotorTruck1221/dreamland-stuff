@@ -19,7 +19,11 @@ export default defineConfig({
     plugins: [dreamlandPlugin()]
 });
 ```
-> [!NOTE]
-> You can continue to use `dreamlandVite()` if you used it before.
+> [!WARNING]
+> If you wish to use `dreamlandVite()` 
+>
+> It must be imported like this: `import { dreamlandVite } from 'vite-plugin-dreamland';`
+> 
+> Over: `import dreamlandVite from 'vite-plugin-dreamland';`
 
 Licensed under the [MIT License](./LICENSE).
