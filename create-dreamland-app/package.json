@@ -1,0 +1,25 @@
+{
+  "name": "create-dreamland-app",
+  "version": "0.0.0",
+  "description": "Create a Dreamland app with all the stuffs setup",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/motortruck1221/dreamland-stuff.git"
+  },
+  "keywords": [
+    "javascript",
+    "dreamland",
+    "dreamland-js",
+    "dreamlandjs"
+  ],
+  "author": "MotorTruck1221",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/motortruck1221/dreamland-stuff/issues"
+  },
+  "homepage": "https://github.com/motortruck1221/dreamland-stuff#readme"
+}

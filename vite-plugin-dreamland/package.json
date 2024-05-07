@@ -1,0 +1,18 @@
+{
+  "name": "vite-plugin-dreamland",
+  "version": "1.0.1",
+  "description": "A simple Vite plugin for dreamland.js",
+  "main": "index.js",
+  "type": "module",
+  "keywords": [
+    "vite",
+    "plugin",
+    "dreamland",
+    "dreamland.js",
+    "dreamlandjs",
+    "js",
+    "javascript"
+  ],
+  "author": "MotorTruck1221",
+  "license": "MIT"
+}
