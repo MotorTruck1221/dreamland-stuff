@@ -5,6 +5,9 @@
   "keywords": ["dreamland", "monorepo", "dreamlandjs", "dreamland-js", "vite", "javascript", "typescript", "vite-plugin", "vite-plugin-dreamland", "create-dreamland-app", "cli" ],  
   "author": "MotorTruck1221",
   "license": "MIT",
+  "scripts": {
+    "preinstall": "npx -y only-allow pnpm"
+  },
   "dependencies": {
       "create-dreamland-app": "workspace:*",
       "vite-plugin-dreamland": "workspace:*"
