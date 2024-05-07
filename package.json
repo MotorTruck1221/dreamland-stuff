@@ -1,16 +1,28 @@
 {
   "name": "dreamland-stuff",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Monorepo for all of my dreamland packages",
-  "keywords": ["dreamland", "monorepo", "dreamlandjs", "dreamland-js", "vite", "javascript", "typescript", "vite-plugin", "vite-plugin-dreamland", "create-dreamland-app", "cli" ],  
+  "keywords": [
+    "dreamland",
+    "monorepo",
+    "dreamlandjs",
+    "dreamland-js",
+    "vite",
+    "javascript",
+    "typescript",
+    "vite-plugin",
+    "vite-plugin-dreamland",
+    "create-dreamland-app",
+    "cli"
+  ],
   "author": "MotorTruck1221",
   "license": "MIT",
   "scripts": {
     "preinstall": "npx -y only-allow pnpm"
   },
   "dependencies": {
-      "create-dreamland-app": "workspace:*",
-      "vite-plugin-dreamland": "workspace:*"
+    "create-dreamland-app": "workspace:*",
+    "vite-plugin-dreamland": "workspace:*"
   },
   "devDependencies": {
     "turbo": "^1.13.3"
