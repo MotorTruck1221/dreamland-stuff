@@ -1,19 +1,13 @@
 import chalk from "chalk";
 import { downloadTemplate } from "giget";
-import fs from 'node:fs';
-import { execa } from "execa";
+import fs from 'fs-extra';
+import sortPackageJson from 'sort-package-json';
 interface options {
     projectName: string,
     scaffoldType: string,
     tsScaffold?: boolean,
     extraTools?: string[],
     installDeps: boolean,
-}
-
-async function patch(patchFile: string) {
-    //read the patchfile (json)
-    const obj = JSON.parse(fs.readFileSync(patchFile, 'utf8'));
-    console.log(obj)
 }
 
 async function template(template: string, projectName: string, extraTools?: string[]) {
@@ -35,9 +29,46 @@ async function template(template: string, projectName: string, extraTools?: stri
                 const obj = JSON.parse(fs.readFileSync(`${projectName}/${extraTools[i]}/patch.json`, 'utf-8'));
                 if (obj.devDeps) {
                     for (const key in obj.devDeps) {
-                        console.log(key, obj.devDeps[key]);
+                        const name = obj.devDeps[key].name;
+                        const version = obj.devDeps[key].version;
+                        const pkgJson = fs.readJSONSync(`${projectName}/package.json`)
+                        pkgJson.devDependencies[name] = version;
+                        const sortedPkgJson = sortPackageJson(pkgJson);
+                        fs.writeJSONSync(`${projectName}/package.json`, sortedPkgJson, {
+                            spaces: 2
+                        })
                     }
                 }
+                if (obj.optDeps) {
+                    for (const key in obj.optDeps) {
+                        const name = obj.optDeps[key].name;
+                        const version = obj.optDeps[key].version;
+                        const pkgJson = fs.readJSONSync(`${projectName}/package.json`)
+                        pkgJson.optionalDependencies[name] = version;
+                        const sortedPkgJson = sortPackageJson(pkgJson);
+                        fs.writeJSONSync(`${projectName}/package.json`, sortedPkgJson, {
+                            spaces: 2
+                        })
+                    }
+                }
+                if (obj.deps) {
+                    for (const key in obj.deps) {
+                        const name = obj.deps[key].name;
+                        const version = obj.deps[key].version;
+                        const pkgJson = fs.readJSONSync(`${projectName}/package.json`);
+                        pkgJson.dependencies[name] = version;
+                        const sortedPkgJson  = sortPackageJson(pkgJson);
+                        fs.writeJSONSync(`${projectName}/package.json`, sortedPkgJson, {
+                            spaces: 2
+                        })
+                    }
+                }
+                if (obj.files) {
+                    for (let z in obj.files) {
+                        fs.copyFileSync(`${projectName}/${extraTools[i]}/${obj.files[z]}`, `${projectName}/${obj.files[z]}`);
+                    }
+                }
+                await fs.rm(`${projectName}/${extraTools[i]}`, { recursive: true, force: true })
             }
         }
     } catch(err: any) {
