@@ -10,7 +10,7 @@
     ],
     "files": [
         "src/router.jsx",
-        "src/index.jsx",
+        "src/main.jsx",
         "src/routes/home.jsx"
     ]
 }
