@@ -9,14 +9,24 @@ interface options {
     installDeps: boolean,
 }
 
-async function template(template: string, projectName: string) {
+async function template(template: string, projectName: string, extraTools?: string) {
     try {
-        await downloadTemplate(`github:motortruck1221/dreamland-stuff/create-dreamland-app/templates/${template}`, {
-            force: true,
-            provider: 'github',
-            cwd: projectName,
-            dir: '.'
-        })
+        if (!extraTools) {
+            await downloadTemplate(`github:motortruck1221/dreamland-stuff/create-dreamland-app/templates/${template}/default`, {
+                force: true,
+                provider: 'github',
+                cwd: projectName,
+                dir: '.'
+            })
+        }
+        else {
+            await downloadTemplate(`github:motortruck1221/dreamland-stuff/create-dreamland-app/templates/${template}/${extraTools}`, {
+                force: true,
+                provider: 'github',
+                cwd: projectName,
+                dir: '.'
+            })
+        }
     } catch(err: any) {
         //remove the dir if it's likely to be created by the CLI 
         if (projectName !== '.' && projectName !== './' && projectName.startsWith('../')) {
