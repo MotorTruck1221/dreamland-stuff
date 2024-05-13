@@ -12,7 +12,7 @@ interface options {
 async function scaffold(opts: options) {
     if (opts.scaffoldType === "tsx/jsx") {
         try {
-            await downloadTemplate('github:motortruck1221/vite-dreamland', {
+            await downloadTemplate('github:motortruck1221/dreamland-stuff/create-dreamland-app/templates', {
                 force: true,
                 provider: 'github',
                 cwd: opts.projectName,

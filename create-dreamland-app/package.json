@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Create a Dreamland app with all the stuffs setup",
   "main": "dist/index.js",
+  "bin": {
+      "create-dreamland-app": "dist/index.js"
+  },
   "type": "module",
   "scripts": {
     "types": "tsc --declaration --emitDeclarationOnly --outDir dist/ --declarationMap",

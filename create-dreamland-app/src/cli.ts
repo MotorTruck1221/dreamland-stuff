@@ -2,6 +2,7 @@ import { Command } from "commander";
 import { scaffold } from './scaffold.js';
 import * as prompt from "@clack/prompts";
 import chalk from "chalk";
+import { count } from "node:console";
 
 async function project() {
     const inital = await prompt.group({
@@ -64,7 +65,11 @@ async function project() {
         }
     })
 
-    scaffold({ projectName: inital.path, scaffoldType: inital.type, tsScaffold: extraStuff?.langType, extraTools: extraStuff?.tools, installDeps: installDeps.install })
+    const scaffoldSpinner = prompt.spinner();
+    scaffoldSpinner.start();
+    scaffoldSpinner.message('Scaffolding...');
+    await scaffold({ projectName: inital.path, scaffoldType: inital.type, tsScaffold: extraStuff?.langType, extraTools: extraStuff?.tools, installDeps: installDeps.install });
+    scaffoldSpinner.stop('Scaffold Complete!');
 }
 
 async function cli() {
