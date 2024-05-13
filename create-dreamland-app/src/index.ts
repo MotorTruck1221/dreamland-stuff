@@ -1,3 +1,3 @@
 import { cli } from './cli.js'
-
-cli()
+import chalk from 'chalk'
+cli().catch((err) => {console.error(chalk.red('Error!\n' + err))});
