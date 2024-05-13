@@ -2,7 +2,10 @@
   "name": "create-dreamland-app",
   "version": "0.0.0",
   "description": "Create a Dreamland app with all the stuffs setup",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "bin": {
+      "create-dreamland-app": "dist/index.js"
+  },
   "type": "module",
   "scripts": {
     "types": "tsc --declaration --emitDeclarationOnly --outDir dist/ --declarationMap",
@@ -41,6 +44,7 @@
     "chalk": "^5.3.0",
     "commander": "^12.0.0",
     "fs-extra": "^11.2.0",
+    "giget": "^1.2.3",
     "ora": "^8.0.1"
   }
 }

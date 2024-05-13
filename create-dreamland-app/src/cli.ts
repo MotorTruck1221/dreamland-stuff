@@ -53,6 +53,12 @@ async function project() {
             message: 'Do you want to install dependencies?',
             initialValue: false,
         })
+    },
+    {
+        onCancel: () => {
+            prompt.cancel('Operation Canceled');
+            process.exit(0);
+        }
     })
 }
 
