@@ -10,6 +10,7 @@
         }
     },
     "files": [
-        "eslint.config.mjs"
+        "eslint.config.mjs",
+        ".eslintignore"
     ]
 }
