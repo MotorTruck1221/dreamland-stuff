@@ -1,0 +1,9 @@
+{
+    "devDeps": {
+        "eslint": "9.2.0",
+        "@eslint/js": "9.2.0"
+    },
+    "files": [
+        "eslint.config.mjs"
+    ]
+}

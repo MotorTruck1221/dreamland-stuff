@@ -9,23 +9,29 @@ interface options {
     installDeps: boolean,
 }
 
-async function template(template: string, projectName: string, extraTools?: string) {
+async function patch(patchFile: string) {
+    //read the patchfile (json)
+    const obj = JSON.parse(fs.readFileSync(patchFile, 'utf8'));
+    console.log(obj)
+}
+
+async function template(template: string, projectName: string, extraTools?: string[]) {
     try {
-        if (!extraTools) {
-            await downloadTemplate(`github:motortruck1221/dreamland-stuff/create-dreamland-app/templates/${template}/default`, {
-                force: true,
-                provider: 'github',
-                cwd: projectName,
-                dir: '.'
-            })
-        }
-        else {
-            await downloadTemplate(`github:motortruck1221/dreamland-stuff/create-dreamland-app/templates/${template}/${extraTools}`, {
-                force: true,
-                provider: 'github',
-                cwd: projectName,
-                dir: '.'
-            })
+        await downloadTemplate(`github:motortruck1221/dreamland-stuff/create-dreamland-app/templates/${template}/default`, {
+            force: true,
+            provider: 'github',
+            cwd: projectName,
+            dir: '.'
+        })
+        if (extraTools) {
+            for (let i in extraTools) {
+                await downloadTemplate(`github:motortruck1221/dreamland-stuff/create-dreamland-app/templates/${template}/${extraTools[i]}`, {
+                    force: true,
+                    provider: 'github',
+                    cwd: projectName + '/' + extraTools[i],
+                    dir: '.'
+                })
+            }
         }
     } catch(err: any) {
         //remove the dir if it's likely to be created by the CLI 
@@ -51,13 +57,13 @@ async function scaffold(opts: options) {
     if (opts.scaffoldType === "tsx/jsx") {
         switch (opts.tsScaffold) {
             case true:
-                await template("tsx", opts.projectName);
+                await template("tsx", opts.projectName, opts.extraTools);
                 break;
             case false:
-                await template("jsx", opts.projectName);
+                await template("jsx", opts.projectName, opts.extraTools);
                 break;
             default:
-                await template("tsx", opts.projectName);
+                await template("tsx", opts.projectName, opts.extraTools);
         }
     }
 }
