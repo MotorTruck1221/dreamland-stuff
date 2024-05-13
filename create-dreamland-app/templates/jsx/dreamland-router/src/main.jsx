@@ -7,4 +7,4 @@ const App = function() {
     return <div id="app" />
 }
 
-document.appendChild(<App />
+document.appendChild(<App />)
