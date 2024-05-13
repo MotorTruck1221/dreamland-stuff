@@ -13,6 +13,7 @@
     "vite": "^5.2.11"
   },
   "dependencies": {
-    "dreamland": "^0.0.18-patch"
+    "dreamland": "^0.0.18-patch",
+    "vite-plugin-dreamland": "^1.0.1"
   }
 }
