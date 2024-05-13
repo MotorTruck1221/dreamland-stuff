@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import { downloadTemplate } from "giget";
 import fs from 'node:fs';
+import { execa } from "execa";
 interface options {
     projectName: string,
     scaffoldType: string,
@@ -31,6 +32,12 @@ async function template(template: string, projectName: string, extraTools?: stri
                     cwd: projectName + '/' + extraTools[i],
                     dir: '.'
                 })
+                const obj = JSON.parse(fs.readFileSync(`${projectName}/${extraTools[i]}/patch.json`, 'utf-8'));
+                if (obj.devDeps) {
+                    for (const key in obj.devDeps) {
+                        console.log(key, obj.devDeps[key]);
+                    }
+                }
             }
         }
     } catch(err: any) {

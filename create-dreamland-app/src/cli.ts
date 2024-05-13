@@ -40,7 +40,7 @@ async function project() {
                 options: [
                     { value: 'dreamland-router', label: 'Dreamland Router', hint: 'recommended' },
                     { value: 'prettier', label: 'Prettier' },
-                    { value: 'eslint', labe: 'eslint' }
+                    { value: 'eslint', label: 'ESlint' }
                 ],
             }),
         },

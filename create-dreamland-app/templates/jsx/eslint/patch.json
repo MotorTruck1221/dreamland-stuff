@@ -1,7 +1,11 @@
 {
     "devDeps": {
-        "eslint": "9.2.0",
-        "@eslint/js": "9.2.0"
+        "eslint": {
+            "version": "9.2.0"
+        },
+        "@eslint/js": {
+            "version": "9.2.0"
+        }
     },
     "files": [
         "eslint.config.mjs"
