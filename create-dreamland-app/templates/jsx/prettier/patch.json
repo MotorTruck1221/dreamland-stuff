@@ -3,10 +3,10 @@
         "prettier": {
             "name": "prettier",
             "version": "3.2.5"
-        },
+        }
     },
     "files": [
         ".prettierignore",
-        "prettierrc"
+        ".prettierrc"
     ]
 }
