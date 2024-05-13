@@ -1,4 +1,5 @@
 import { Command } from "commander";
+import { scaffold } from './scaffold.js';
 import * as prompt from "@clack/prompts";
 import chalk from "chalk";
 
@@ -25,8 +26,9 @@ async function project() {
         }
     });
 
+    let extraStuff = null;
     if (inital.type === 'tsx/jsx') {
-        const extraStuff = await prompt.group({
+        extraStuff = await prompt.group({
             langType: () => prompt.confirm({
                 message: 'Do you want to use TypeScript?',
                 initialValue: true,
@@ -48,6 +50,7 @@ async function project() {
             }
         })
     }
+
     const installDeps = await prompt.group({
         install: () => prompt.confirm({
             message: 'Do you want to install dependencies?',
@@ -60,6 +63,8 @@ async function project() {
             process.exit(0);
         }
     })
+
+    scaffold({ projectName: inital.path, scaffoldType: inital.type, tsScaffold: extraStuff?.langType, extraTools: extraStuff?.tools, installDeps: installDeps.install })
 }
 
 async function cli() {
