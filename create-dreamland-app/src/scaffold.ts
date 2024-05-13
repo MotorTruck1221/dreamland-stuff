@@ -63,6 +63,11 @@ async function template(template: string, projectName: string, extraTools?: stri
                         })
                     }
                 }
+                if (obj.folders) {
+                    for (let z in obj.folders) {
+                        fs.mkdirSync(`${projectName}/${obj.folders[z]}`);
+                    }
+                }
                 if (obj.files) {
                     for (let z in obj.files) {
                         fs.copyFileSync(`${projectName}/${extraTools[i]}/${obj.files[z]}`, `${projectName}/${obj.files[z]}`);

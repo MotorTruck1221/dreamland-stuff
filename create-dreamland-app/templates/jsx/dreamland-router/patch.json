@@ -5,6 +5,9 @@
             "version": "https://github.com/mercuryworkshop/dreamland-router"
         }
     },
+    "folders": [
+        "src/routes/"
+    ],
     "files": [
         "src/router.jsx",
         "src/index.jsx",
