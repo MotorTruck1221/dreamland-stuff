@@ -1,0 +1,13 @@
+{
+    "deps": {
+        "dreamland-router": {
+            "name": "dreamland-router",
+            "version": "https://github.com/mercuryworkshop/dreamland-router"
+        }
+    },
+    "files": [
+        "src/router.jsx",
+        "src/index.jsx",
+        "src/routes/home.jsx"
+    ]
+}
