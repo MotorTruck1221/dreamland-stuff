@@ -8,4 +8,6 @@ function App() {
 	`;
 }
 
-document.body.appendChild(App);
+let app = html`< ${App}> <${App} />`;
+
+document.body.appendChild(app);
