@@ -12,7 +12,7 @@ async function project() {
             placeholder: 'project-name'
         }),
         type: () => prompt.select({
-            message: `How Would you like to use dreamland?`,
+            message: chalk.magenta(`How Would you like to use dreamland?`),
             initialValue: 'tsx/jsx',
             maxItems: 2,
             options: [
@@ -23,7 +23,7 @@ async function project() {
     },
     {
         onCancel: () => {
-            prompt.cancel('Operation Canceled');
+            prompt.cancel(chalk.bold.red('Operation Canceled'));
             process.exit(0);
         }
     });
@@ -32,11 +32,11 @@ async function project() {
     if (inital.type === 'tsx/jsx') {
         extraStuff = await prompt.group({
             langType: () => prompt.confirm({
-                message: 'Do you want to use TypeScript?',
+                message: chalk.bold.white(`Do you want to use ${chalk.blue("TypeScript")}?`),
                 initialValue: true,
             }),
             tools: () => prompt.multiselect({
-                message: 'Select some extra tools.',
+                message: chalk.bold.magenta('Select some extra tools.'),
                 initialValues: ['dreamland-router'],
                 required: false,
                 options: [
@@ -48,7 +48,7 @@ async function project() {
         },
         {
             onCancel: () => {
-                prompt.cancel('Operation Canceled');
+                prompt.cancel(chalk.bold.red('Operation Canceled'));
                 process.exit(0);
             },
         })
@@ -56,22 +56,22 @@ async function project() {
 
     const installDeps = await prompt.group({
         install: () => prompt.confirm({
-            message: 'Do you want to install dependencies?',
+            message: chalk.red('Do you want to install dependencies?'),
             initialValue: false,
         })
     },
     {
         onCancel: () => {
-            prompt.cancel('Operation Canceled');
+            prompt.cancel(chalk.bold.red('Operation Canceled'));
             process.exit(0);
         }
     })
     
-    let packageManager = null;
+    let packageManager = "npm";
     if (installDeps.install === true) {
         const pm = await prompt.group({
             manager: () => prompt.select({
-                message: 'Select your package manager',
+                message: chalk.green('Select your package manager'),
                 initialValue: 'npm',
                 maxItems: 3,
                 options: [
@@ -84,7 +84,7 @@ async function project() {
         },
         { 
             onCancel: () => {
-                prompt.cancel("Operation canceled");
+                prompt.cancel(chalk.bold.red("Operation canceled"));
                 process.exit(0);
             }
         })
@@ -94,18 +94,23 @@ async function project() {
 
     const scaffoldSpinner = prompt.spinner();
     scaffoldSpinner.start();
-    scaffoldSpinner.message('Scaffolding...');
+    scaffoldSpinner.message(chalk.yellow('Scaffolding...'));
     await scaffold({ projectName: inital.path, scaffoldType: inital.type, tsScaffold: extraStuff?.langType, extraTools: extraStuff?.tools })
-    scaffoldSpinner.stop('Scaffold Complete!');
+    scaffoldSpinner.stop(chalk.bold.green('Scaffold Complete!'));
     if (installDeps.install === true) {
         const pmSpinner = prompt.spinner();
         pmSpinner.start();
-        pmSpinner.message("Installing dependencies...")
-        if (packageManager === null) {
-            packageManager = "npm"
-        }
+        pmSpinner.message(chalk.yellow("Installing dependencies...")) 
         await execa(packageManager, ['install'], { cwd: inital.path })
-        pmSpinner.stop("Dependencies Installed!");
+        pmSpinner.stop(chalk.bold.green("Dependencies Installed!"));
+    }
+    switch(installDeps.install) {
+        case true:
+            prompt.note(`cd ${inital.path} \n${packageManager} run dev`, chalk.bold.magenta("Done Creating. Now Run:"));
+            break;
+        case false:
+            prompt.note(`cd ${inital.path} \n${packageManager} install \n${packageManager} run dev`, chalk.bold.magenta("Done Creating. Now Run:"));
+            break;
     }
 }
 
