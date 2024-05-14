@@ -37,6 +37,7 @@ async function project() {
             tools: () => prompt.multiselect({
                 message: 'Select some extra tools.',
                 initialValues: ['dreamland-router'],
+                required: false,
                 options: [
                     { value: 'dreamland-router', label: 'Dreamland Router', hint: 'recommended' },
                     { value: 'prettier', label: 'Prettier' },
@@ -48,7 +49,7 @@ async function project() {
             onCancel: () => {
                 prompt.cancel('Operation Canceled');
                 process.exit(0);
-            }
+            },
         })
     }
 
