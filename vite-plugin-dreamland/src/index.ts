@@ -1,5 +1,5 @@
 import type { Plugin, UserConfig } from 'vite'
-function dreamlandPlugin(): Plugin {
+export default function dreamlandPlugin(): Plugin {
     return {
         name: 'vite-plugin-dreamland',
         config(config: UserConfig) {
@@ -14,6 +14,4 @@ function dreamlandVite(): Plugin {
     return dreamlandPlugin()
 }
 
-//export both as default
-export default dreamlandPlugin
 export { dreamlandVite }

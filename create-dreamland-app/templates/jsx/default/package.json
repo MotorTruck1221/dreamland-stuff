@@ -13,6 +13,6 @@
   },
   "dependencies": {
     "dreamland": "^0.0.19",
-    "vite-plugin-dreamland": "^1.1.0"
+    "vite-plugin-dreamland": "^1.1.1"
   }
 }
