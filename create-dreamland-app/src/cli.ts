@@ -117,7 +117,7 @@ async function project() {
         spinner.message(chalk.yellow("Scaffolding Project..."))
         await scaffold({ projectName: inital.path, scaffoldType: inital.type, tsScaffold: extraStuff?.langType, extraTools: extraStuff?.tools });
         spinner.stop(chalk.bold.green("Scaffold complete!"));
-        prompt.note(`cd ${inital.path} \nand start your webserver`, chalk.bold.magenta("Done. Now Do:"));
+        prompt.note(`cd ${inital.path} \nAnd get to work!`, chalk.bold.magenta("Done. Now Do:"));
     }
 }
 
