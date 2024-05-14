@@ -2,7 +2,7 @@
     "deps": {
         "dreamland-router": {
             "name": "dreamland-router",
-            "version": "https://github.com/motortruck1221/dreamland-router"
+            "version": "https://github.com/mercuryworkshop/dreamland-router"
         },
         "rollup-plugin-typescript2": {
             "name": "rollup-plugin-typescript2",
@@ -13,8 +13,8 @@
         "src/routes/"
     ],
     "files": [
-        "src/router.jsx",
-        "src/main.jsx",
-        "src/routes/home.jsx"
+        "src/router.tsx",
+        "src/main.tsx",
+        "src/routes/home.tsx"
     ]
 }
