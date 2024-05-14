@@ -1,6 +1,6 @@
 {
   "name": "create-dreamland-app",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Create a Dreamland app with all the stuffs setup",
   "main": "dist/index.js",
   "bin": {
