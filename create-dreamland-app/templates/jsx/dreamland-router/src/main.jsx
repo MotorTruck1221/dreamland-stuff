@@ -7,4 +7,6 @@ const App = function() {
     return <div id="app" />
 }
 
-document.appendChild(<App />)
+window.addEventListener('load', () => {
+    document.getElementById("app").replaceWith(<App />);
+})
