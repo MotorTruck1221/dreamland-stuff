@@ -7,13 +7,12 @@ interface options {
     scaffoldType: string,
     tsScaffold?: boolean,
     extraTools?: string[],
-    installDeps: boolean,
 }
 
 async function template(template: string, projectName: string, extraTools?: string[]) {
     try {
         await downloadTemplate(`github:motortruck1221/dreamland-stuff/create-dreamland-app/templates/${template}/default`, {
-            force: true,
+            force: false,
             provider: 'github',
             cwd: projectName,
             dir: '.'
