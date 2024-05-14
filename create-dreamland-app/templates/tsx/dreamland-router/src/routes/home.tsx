@@ -7,3 +7,5 @@ const Home: Component<{}, {counter: number}> = function() {
         </div>
     )
 }
+
+export default Home;
