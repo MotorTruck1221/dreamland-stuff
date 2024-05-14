@@ -65,7 +65,9 @@ async function template(template: string, projectName: string, extraTools?: stri
                 }
                 if (obj.folders) {
                     for (let z in obj.folders) {
-                        fs.mkdirSync(`${projectName}/${obj.folders[z]}`);
+                        try {
+                            fs.mkdirSync(`${projectName}/${obj.folders[z]}`);
+                        } catch (_) {}
                     }
                 }
                 if (obj.files) {

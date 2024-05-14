@@ -3,6 +3,10 @@
         "dreamland-router": {
             "name": "dreamland-router",
             "version": "https://github.com/mercuryworkshop/dreamland-router"
+        },
+        "rollup-plugin-typescript2": {
+            "name": "rollup-plugin-typescript2",
+            "version": "^0.36.0"
         }
     },
     "folders": [
