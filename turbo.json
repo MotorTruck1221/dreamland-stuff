@@ -12,7 +12,7 @@
         "dependsOn": ["^build", "types"],
         "outputs": ["dist"]
     },
-    "publish": {
+    "release": {
         "dependsOn": ["build"]
     },
     "lint": {},
