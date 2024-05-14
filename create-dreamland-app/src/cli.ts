@@ -17,7 +17,7 @@ async function project() {
             maxItems: 2,
             options: [
                 { value: 'tsx/jsx', label: 'TSX/JSX' },
-                { value: 'js', label: 'Basic JavaScript and HTML (no bundler)' }
+                { value: 'basic', label: 'Basic JavaScript and HTML (no bundler)' }
             ],
         })
     },
@@ -52,65 +52,72 @@ async function project() {
                 process.exit(0);
             },
         })
-    }
 
-    const installDeps = await prompt.group({
-        install: () => prompt.confirm({
-            message: chalk.red('Do you want to install dependencies?'),
-            initialValue: false,
-        })
-    },
-    {
-        onCancel: () => {
-            prompt.cancel(chalk.bold.red('Operation Canceled'));
-            process.exit(0);
-        }
-    })
-    
-    let packageManager = "npm";
-    if (installDeps.install === true) {
-        const pm = await prompt.group({
-            manager: () => prompt.select({
-                message: chalk.green('Select your package manager'),
-                initialValue: 'npm',
-                maxItems: 3,
-                options: [
-                    { value: 'npm', label: 'NPM' },
-                    { value: 'pnpm', label: 'PNPM' },
-                    { value: 'yarn', label: 'yarn' },
-                    { value: 'bun', label: 'bun' }
-                ]
-            }),
+        const installDeps = await prompt.group({
+            install: () => prompt.confirm({
+                message: chalk.red('Do you want to install dependencies?'),
+                initialValue: false,
+            })
         },
-        { 
+        {
             onCancel: () => {
-                prompt.cancel(chalk.bold.red("Operation canceled"));
+                prompt.cancel(chalk.bold.red('Operation Canceled'));
                 process.exit(0);
             }
         })
-        packageManager = pm.manager
-    }
+    
+        let packageManager = "npm";
+        if (installDeps.install === true) {
+            const pm = await prompt.group({
+                manager: () => prompt.select({
+                    message: chalk.green('Select your package manager'),
+                    initialValue: 'npm',
+                    maxItems: 3,
+                    options: [
+                        { value: 'npm', label: 'NPM' },
+                        { value: 'pnpm', label: 'PNPM' },
+                        { value: 'yarn', label: 'yarn' },
+                        { value: 'bun', label: 'bun' }
+                    ]
+                }),
+            },
+            { 
+                onCancel: () => {
+                    prompt.cancel(chalk.bold.red("Operation canceled"));
+                    process.exit(0);
+                }
+            })
+            packageManager = pm.manager
+        }
 
-
-    const scaffoldSpinner = prompt.spinner();
-    scaffoldSpinner.start();
-    scaffoldSpinner.message(chalk.yellow('Scaffolding...'));
-    await scaffold({ projectName: inital.path, scaffoldType: inital.type, tsScaffold: extraStuff?.langType, extraTools: extraStuff?.tools })
-    scaffoldSpinner.stop(chalk.bold.green('Scaffold Complete!'));
-    if (installDeps.install === true) {
-        const pmSpinner = prompt.spinner();
-        pmSpinner.start();
-        pmSpinner.message(chalk.yellow("Installing dependencies...")) 
-        await execa(packageManager, ['install'], { cwd: inital.path })
-        pmSpinner.stop(chalk.bold.green("Dependencies Installed!"));
+        const scaffoldSpinner = prompt.spinner();
+        scaffoldSpinner.start();
+        scaffoldSpinner.message(chalk.yellow('Scaffolding...'));
+        await scaffold({ projectName: inital.path, scaffoldType: inital.type, tsScaffold: extraStuff?.langType, extraTools: extraStuff?.tools })
+        scaffoldSpinner.stop(chalk.bold.green('Scaffold Complete!'));
+        if (installDeps.install === true) {
+            const pmSpinner = prompt.spinner();
+            pmSpinner.start();
+            pmSpinner.message(chalk.yellow("Installing dependencies...")) 
+            await execa(packageManager, ['install'], { cwd: inital.path })
+            pmSpinner.stop(chalk.bold.green("Dependencies Installed!"));
+        }
+        switch(installDeps.install) {
+            case true:
+                prompt.note(`cd ${inital.path} \n${packageManager} run dev`, chalk.bold.magenta("Done Creating. Now Run:"));
+                break;
+            case false:
+                prompt.note(`cd ${inital.path} \n${packageManager} install \n${packageManager} run dev`, chalk.bold.magenta("Done Creating. Now Run:"));
+                break;
+        }
     }
-    switch(installDeps.install) {
-        case true:
-            prompt.note(`cd ${inital.path} \n${packageManager} run dev`, chalk.bold.magenta("Done Creating. Now Run:"));
-            break;
-        case false:
-            prompt.note(`cd ${inital.path} \n${packageManager} install \n${packageManager} run dev`, chalk.bold.magenta("Done Creating. Now Run:"));
-            break;
+    if (inital.type === "basic") {
+        const spinner = prompt.spinner();
+        spinner.start();
+        spinner.message(chalk.yellow("Scaffolding Project..."))
+        await scaffold({ projectName: inital.path, scaffoldType: inital.type, tsScaffold: extraStuff?.langType, extraTools: extraStuff?.tools });
+        spinner.stop(chalk.bold.green("Scaffold complete!"));
+        prompt.note(`cd ${inital.path} \nand start your webserver`, chalk.bold.magenta("Done. Now Do:"));
     }
 }
 

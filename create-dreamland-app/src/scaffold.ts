@@ -110,6 +110,9 @@ async function scaffold(opts: options) {
                 await template("tsx", opts.projectName, opts.extraTools);
         }
     }
+    else if (opts.scaffoldType === "js") {
+        await template("basic", opts.projectName, opts.extraTools);
+    }
 }
 
 export { scaffold }
