@@ -1,4 +1,5 @@
-import Router from './router.jsx';
+import "dreamland/dev";
+import { Router } from './router.jsx';
 const App = function() {
     this.mount = () => {
         Router.render(this.root);

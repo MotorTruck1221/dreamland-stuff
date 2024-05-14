@@ -1,5 +1,3 @@
-import "dreamland/dev";
-
 // javascript syntax for defining components
 const Home = function () {
     this.counter = 0
