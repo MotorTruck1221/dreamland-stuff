@@ -1,0 +1,16 @@
+{
+    "devDeps": {
+        "eslint": {
+            "name": "eslint",
+            "version": "^9.2.0"
+        },
+        "@eslint/js": {
+            "name": "@eslint/js",
+            "version": "^9.2.0"
+        }
+    },
+    "files": [
+        "eslint.config.js",
+        ".eslintignore"
+    ]
+}
