@@ -4,7 +4,7 @@ Easily setup [dreamland.js](https://github.com/mercuryworkshop/dreamlandjs)
 
 ## Usage
 
-![exampleOfCDA](./example.gif)
+![exampleOfCDA](https://raw.githubusercontent.com/MotorTruck1221/dreamland-stuff/main/create-dreamland-app/templates/example.gif)
 
 ### npx
 ```bash
@@ -30,4 +30,4 @@ pnpm create dreamland-app
 ```bash
 pnpm dlx create-dreamland-app@latest 
 ```
-- Want to add a tool? Follow the guide here [./tooling.md](./tooling.md)
+- Want to add a tool? Follow the guide here [./tooling.md](https://github.com/motortruck1221/dreamland-stuff/blob/main/create-dreamland-app/tooling.md)

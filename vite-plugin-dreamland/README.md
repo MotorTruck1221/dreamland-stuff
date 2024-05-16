@@ -1,6 +1,7 @@
 # Dreamland Vite Plugin
 
 - A simple plugin for Vite with usage of [Dreamland.js](https://github.com/mercuryworkshop/dreamlandjs)
+- Used in [Create Dreamland App](https://github.com/motortruck1221/dreamland-stuff/tree/main/create-dreamland-app)
 
 ## Installation
 
