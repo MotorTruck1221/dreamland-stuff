@@ -6,6 +6,10 @@ import { count } from "node:console";
 import { execa } from "execa";
 
 async function project() {
+    if (process.env.TERM_PROGRAM?.toLowerCase().includes("mintty")) {
+        console.log(chalk.yellow("WARNING: It looks like you are using MinTTY which is not interactive. This is most likely because you are using Git Bash. \nIf you are using Git Bash, please use it from another terminal like Windows Terminal. "));
+        throw new Error("Terminal Session is Non-Interactive");
+    }
     const inital = await prompt.group({
         path: () => prompt.text({
             message: chalk.green('Where would you like to create your project?'),
