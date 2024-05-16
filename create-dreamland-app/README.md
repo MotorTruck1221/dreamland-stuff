@@ -30,4 +30,4 @@ pnpm create dreamland-app
 ```bash
 pnpm dlx create-dreamland-app@latest 
 ```
-- Want to add a tool? Follow the guide here [./CONTRIBUTING.md](./tooling.md)
+- Want to add a tool? Follow the guide here [./tooling.md](./tooling.md)
