@@ -21,12 +21,18 @@ importers:
 
   create-dreamland-app:
     dependencies:
+      '@babel/plugin-syntax-import-attributes':
+        specifier: ^7.24.1
+        version: 7.24.1(@babel/core@7.24.5)
       '@clack/core':
         specifier: ^0.3.4
         version: 0.3.4
       '@clack/prompts':
         specifier: ^0.7.0
         version: 0.7.0
+      ajv:
+        specifier: ^8.13.0
+        version: 8.13.0
       chalk:
         specifier: ^5.3.0
         version: 5.3.0
@@ -48,9 +54,6 @@ importers:
       sort-package-json:
         specifier: ^2.10.0
         version: 2.10.0
-      zod:
-        specifier: ^3.23.8
-        version: 3.23.8
     devDependencies:
       '@babel/cli':
         specifier: ^7.24.5
@@ -73,35 +76,6 @@ importers:
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
-
-  create-dreamland-app/templates/jsx:
-    dependencies:
-      dreamland:
-        specifier: ^0.0.18-patch
-        version: 0.0.18-patch
-      vite-plugin-dreamland:
-        specifier: ^1.0.1
-        version: 1.0.1
-    devDependencies:
-      vite:
-        specifier: ^5.2.11
-        version: 5.2.11(@types/node@20.12.10)
-
-  create-dreamland-app/templates/tsx:
-    dependencies:
-      dreamland:
-        specifier: ^0.0.18-patch
-        version: 0.0.18-patch
-      vite-plugin-dreamland:
-        specifier: ^1.0.1
-        version: 1.0.1
-    devDependencies:
-      typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
-      vite:
-        specifier: ^5.2.11
-        version: 5.2.11(@types/node@20.12.10)
 
   vite-plugin-dreamland:
     devDependencies:
@@ -1015,6 +989,9 @@ packages:
   '@types/node@20.12.10':
     resolution: {integrity: sha512-Eem5pH9pmWBHoGAT8Dr5fdc5rYA+4NAovdM4EktRPVAAiJhmWWfQrA0cFhAbOsQdSfIHjAud6YdkbL69+zSKjw==}
 
+  ajv@8.13.0:
+    resolution: {integrity: sha512-PRA911Blj99jR5RMeTunVbNXMF6Lp4vZXnk5GQjcnUWUTsrXtekg/pnmFFI2u/I36Y/2bITGS30GZCXei6uNkA==}
+
   ansi-regex@6.0.1:
     resolution: {integrity: sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==}
     engines: {node: '>=12'}
@@ -1146,9 +1123,6 @@ packages:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
 
-  dreamland@0.0.18-patch:
-    resolution: {integrity: sha512-iwuCjWe78TH1BFocrwf4horgJZwfrqx6RRR1JLPzQoWArmcrfxRskfAS9iHpvCUzC/ARywYUQyDVeRa5Ip5kUw==}
-
   electron-to-chromium@1.4.757:
     resolution: {integrity: sha512-jftDaCknYSSt/+KKeXzH3LX5E2CvRLm75P3Hj+J/dv3CL0qUYcOt13d5FN1NiL5IJbbhzHrb3BomeG2tkSlZmw==}
 
@@ -1179,6 +1153,9 @@ packages:
   execa@9.1.0:
     resolution: {integrity: sha512-lSgHc4Elo2m6bUDhc3Hl/VxvUDJdQWI40RZ4KMY9bKRc+hgMOT7II/JjbNDhI8VnMtrCb7U/fhpJIkLORZozWw==}
     engines: {node: '>=18'}
+
+  fast-deep-equal@3.1.3:
+    resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
   fast-glob@3.3.2:
     resolution: {integrity: sha512-oX2ruAFQwf/Orj8m737Y5adxDQO0LAB7/S5MnxCdTNDd4p6BsyIVsv9JQsATbTSq8KHRpLwIHbVlUNatxd+1Ow==}
@@ -1346,6 +1323,9 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
+  json-schema-traverse@1.0.0:
+    resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
+
   json5@2.2.3:
     resolution: {integrity: sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==}
     engines: {node: '>=6'}
@@ -1497,6 +1477,10 @@ packages:
     resolution: {integrity: sha512-E9e9HJ9R9NasGOgPaPE8VMeiPKAyWR5jcFpNnwIejslIhWqdqOrb2wShBsncMPUb+BcCd2OPYfh7p2W6oemTng==}
     engines: {node: '>=18'}
 
+  punycode@2.3.1:
+    resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
+    engines: {node: '>=6'}
+
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
@@ -1524,6 +1508,10 @@ packages:
   regjsparser@0.9.1:
     resolution: {integrity: sha512-dQUtn90WanSNl+7mQKcXAgZxvUe7Z0SqXlgzv0za4LwiUhyzBC58yQO3liFoUgu8GiJVInAhJjkj1N0EtQ5nkQ==}
     hasBin: true
+
+  require-from-string@2.0.2:
+    resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
+    engines: {node: '>=0.10.0'}
 
   resolve@1.22.8:
     resolution: {integrity: sha512-oKWePCxqpd6FlLvGV1VU0x7bkPmmCNolxzjMf4NczoDnQcIWrAF+cPtZn5i6n+RfD2d9i0tzpKnG6Yk168yIyw==}
@@ -1706,8 +1694,8 @@ packages:
     peerDependencies:
       browserslist: '>= 4.21.0'
 
-  vite-plugin-dreamland@1.0.1:
-    resolution: {integrity: sha512-IAjDsXTiDggRVRwg5GxflO5BgDx9x3Cw/4p/d8K4U7HikUfK944HJXiBUwP4YSCe7Af8Dw/d1d5A4yF0yzXuwA==}
+  uri-js@4.4.1:
+    resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
   vite@5.2.11:
     resolution: {integrity: sha512-HndV31LWW05i1BLPMUCE1B9E9GFbOu1MbenhS58FuK6owSO5qHm7GiCotrNY1YE5rMeQSFBGmT5ZaLEjFizgiQ==}
@@ -1754,9 +1742,6 @@ packages:
   yoctocolors@2.0.0:
     resolution: {integrity: sha512-esbDnt0Z1zI1KgvOZU90hJbL6BkoUbrP9yy7ArNZ6TmxBxydMJTYMf9FZjmwwcA8ZgEQzriQ3hwZ0NYXhlFo8Q==}
     engines: {node: '>=18'}
-
-  zod@3.23.8:
-    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
 
 snapshots:
 
@@ -2694,6 +2679,13 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
+  ajv@8.13.0:
+    dependencies:
+      fast-deep-equal: 3.1.3
+      json-schema-traverse: 1.0.0
+      require-from-string: 2.0.2
+      uri-js: 4.4.1
+
   ansi-regex@6.0.1: {}
 
   ansi-styles@3.2.1:
@@ -2826,8 +2818,6 @@ snapshots:
     dependencies:
       path-type: 4.0.0
 
-  dreamland@0.0.18-patch: {}
-
   electron-to-chromium@1.4.757: {}
 
   emoji-regex@10.3.0: {}
@@ -2890,6 +2880,8 @@ snapshots:
       signal-exit: 4.1.0
       strip-final-newline: 4.0.0
       yoctocolors: 2.0.0
+
+  fast-deep-equal@3.1.3: {}
 
   fast-glob@3.3.2:
     dependencies:
@@ -3037,6 +3029,8 @@ snapshots:
 
   jsesc@2.5.2: {}
 
+  json-schema-traverse@1.0.0: {}
+
   json5@2.2.3: {}
 
   jsonfile@6.1.0:
@@ -3170,6 +3164,8 @@ snapshots:
     dependencies:
       parse-ms: 4.0.0
 
+  punycode@2.3.1: {}
+
   queue-microtask@1.2.3: {}
 
   readdirp@3.6.0:
@@ -3201,6 +3197,8 @@ snapshots:
   regjsparser@0.9.1:
     dependencies:
       jsesc: 0.5.0
+
+  require-from-string@2.0.2: {}
 
   resolve@1.22.8:
     dependencies:
@@ -3367,7 +3365,9 @@ snapshots:
       escalade: 3.1.2
       picocolors: 1.0.0
 
-  vite-plugin-dreamland@1.0.1: {}
+  uri-js@4.4.1:
+    dependencies:
+      punycode: 2.3.1
 
   vite@5.2.11(@types/node@20.12.10):
     dependencies:
@@ -3389,5 +3389,3 @@ snapshots:
   yallist@4.0.0: {}
 
   yoctocolors@2.0.0: {}
-
-  zod@3.23.8: {}
