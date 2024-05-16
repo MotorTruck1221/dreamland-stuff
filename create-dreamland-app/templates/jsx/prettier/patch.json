@@ -1,6 +1,6 @@
 {
     "devDeps": {
-        "prettier": {
+        "dep": {
             "name": "prettier",
             "version": "^3.2.5"
         }

@@ -1,10 +1,10 @@
 {
     "devDeps": {
-        "eslint": {
+        "dep": {
             "name": "eslint",
             "version": "^9.2.0"
         },
-        "@eslint/js": {
+        "dep": {
             "name": "@eslint/js",
             "version": "^9.2.0"
         }

@@ -2,6 +2,8 @@ import chalk from "chalk";
 import { downloadTemplate } from "giget";
 import fs from 'fs-extra';
 import sortPackageJson from 'sort-package-json';
+import patchSchema from './patches.schema.json';
+import Ajv from "ajv";
 interface options {
     projectName: string,
     scaffoldType: string,
@@ -26,6 +28,12 @@ async function template(template: string, projectName: string, extraTools?: stri
                     dir: '.'
                 })
                 const obj = JSON.parse(fs.readFileSync(`${projectName}/${extraTools[i]}/patch.json`, 'utf-8'));
+                //validate the object to the schema
+                const ajv = new Ajv();
+                const isDataValid = ajv.validate(patchSchema, obj);
+                if (isDataValid) {
+                    console.log('yussir')
+                }
                 if (obj.devDeps) {
                     for (const key in obj.devDeps) {
                         const name = obj.devDeps[key].name;
