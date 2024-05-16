@@ -14,8 +14,10 @@
 ---
 - [Vite Plugin Dreamland](./vite-plugin-dreamland/)
     - A relatively simple plugin for [dreamland.js](https://github.com/mercuryworkshop/dreamlandjs)
+
 <br />
 <br />
+
 - [Create Dreamland App](./create-dreamland-app/)
     - An easy way to setup [dreamland.js](https://github.com/mercuryworkshop/dreamlandjs)
 
