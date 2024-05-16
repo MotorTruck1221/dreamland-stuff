@@ -10,7 +10,7 @@
   "scripts": {
     "types": "tsc --declaration --emitDeclarationOnly --outDir dist/ --declarationMap",
     "type-check": "tsc --noEmit",
-    "build": "babel src/ --out-dir dist/ --extensions '.ts'",
+    "build": "babel src/ --out-dir dist/ --extensions '.ts' --copy-files",
     "release": "npm publish --access public"
   },
   "repository": {
@@ -39,6 +39,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@babel/plugin-syntax-import-attributes": "^7.24.1",
     "@clack/core": "^0.3.4",
     "@clack/prompts": "^0.7.0",
     "ajv": "^8.13.0",

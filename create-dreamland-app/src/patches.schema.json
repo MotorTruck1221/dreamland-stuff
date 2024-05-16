@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
     "deps": {
@@ -81,7 +80,9 @@
     },
     "files": {
       "type": "array",
-      "items": {}
+      "items": [
+          { "type": "string" }
+      ]
     }
   }
 }

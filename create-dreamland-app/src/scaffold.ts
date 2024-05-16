@@ -2,7 +2,7 @@ import chalk from "chalk";
 import { downloadTemplate } from "giget";
 import fs from 'fs-extra';
 import sortPackageJson from 'sort-package-json';
-import patchSchema from './patches.schema.json';
+import patchSchema from './patches.schema.json' with { type: "json" };
 import Ajv from "ajv";
 interface options {
     projectName: string,
@@ -29,10 +29,12 @@ async function template(template: string, projectName: string, extraTools?: stri
                 })
                 const obj = JSON.parse(fs.readFileSync(`${projectName}/${extraTools[i]}/patch.json`, 'utf-8'));
                 //validate the object to the schema
-                const ajv = new Ajv();
+                const ajv = new Ajv({ strict: false });
                 const isDataValid = ajv.validate(patchSchema, obj);
-                if (isDataValid) {
-                    console.log('yussir')
+                if (!isDataValid) {
+                    console.log(chalk.red(`It looks like the tool: ${extraTools[i]} is not setup correctly. Not installing...`));
+                    fs.rmdirSync(`${projectName}/${extraTools[i]}`);
+                    continue;
                 }
                 if (obj.devDeps) {
                     for (const key in obj.devDeps) {
