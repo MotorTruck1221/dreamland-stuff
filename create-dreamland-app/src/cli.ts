@@ -74,8 +74,8 @@ async function project() {
                     initialValue: 'npm',
                     maxItems: 3,
                     options: [
-                        { value: 'npm', label: 'NPM' },
-                        { value: 'pnpm', label: 'PNPM' },
+                        { value: 'npm', label: 'npm' },
+                        { value: 'pnpm', label: 'pnpm' },
                         { value: 'yarn', label: 'yarn' },
                         { value: 'bun', label: 'bun' }
                     ]
@@ -99,7 +99,13 @@ async function project() {
             const pmSpinner = prompt.spinner();
             pmSpinner.start();
             pmSpinner.message(chalk.yellow("Installing dependencies...")) 
-            await execa(packageManager, ['install'], { cwd: inital.path })
+            try {
+                await execa(packageManager, ['install'], { cwd: inital.path })
+            } catch (err: any) {
+                console.log(chalk.red(`\n${packageManager} has failed to install dependencies. Defaulting to npm`));
+                packageManager = "npm";
+                await execa('npm', ['install'], { cwd: inital.path });
+            }
             pmSpinner.stop(chalk.bold.green("Dependencies Installed!"));
         }
         switch(installDeps.install) {

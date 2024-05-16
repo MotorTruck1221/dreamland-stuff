@@ -5,7 +5,7 @@
             "version": "https://github.com/mercuryworkshop/dreamland-router"
         },
         "dep": {
-            "nam": "rollup-plugin-typescript2",
+            "name": "rollup-plugin-typescript2",
             "version": "^0.36.0"
         }
     },

@@ -32,8 +32,8 @@ async function template(template: string, projectName: string, extraTools?: stri
                 const ajv = new Ajv({ strict: false });
                 const isDataValid = ajv.validate(patchSchema, obj);
                 if (!isDataValid) {
-                    console.log(chalk.red(`It looks like the tool: ${extraTools[i]} is not setup correctly. Not installing...`));
-                    fs.rmdirSync(`${projectName}/${extraTools[i]}`);
+                    console.log(chalk.red(`\nThe tool: ${extraTools[i]} is not setup correctly. Not installing...`));
+                    fs.rm(`${projectName}/${extraTools[i]}`, { recursive: true, force: true });
                     continue;
                 }
                 if (obj.devDeps) {
