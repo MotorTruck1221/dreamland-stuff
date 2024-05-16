@@ -1,4 +1,4 @@
-# Create Dreamland App
+# Create Dreamland App (CDA)
 
 Easily setup [dreamland.js](https://github.com/mercuryworkshop/dreamlandjs)
 
@@ -30,3 +30,4 @@ pnpm create dreamland-app
 ```bash
 pnpm dlx create-dreamland-app@latest 
 ```
+- Want to add a tool? Follow the guide here [./CONTRIBUTING.md](./CONTRIBUTING.md)
