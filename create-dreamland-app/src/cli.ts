@@ -59,7 +59,7 @@ async function project() {
 
         const initGit = await prompt.group({
             init: () => prompt.confirm({
-                message: chalk.magentaBright('Do you want a Git Repository initalized?'),
+                message: chalk.green('Do you want a Git Repository initalized?'),
                 initialValue: false,
                 })
             },
