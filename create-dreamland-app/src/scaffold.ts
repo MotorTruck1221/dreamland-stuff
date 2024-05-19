@@ -2,11 +2,14 @@ import chalk from 'chalk';
 import fs from 'fs-extra';
 import { downloadTemplate } from 'giget';
 import sortPackageJson from 'sort-package-json';
-const patchFile = fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)) + '/patches.schema.json'), 'utf-8');
+const patchFile = fs.readFileSync(
+    path.join(path.dirname(fileURLToPath(import.meta.url)) + '/patches.schema.json'),
+    'utf-8'
+);
 const patchSchema = JSON.parse(patchFile);
 import path from 'path';
-import Ajv from 'ajv';
 import { fileURLToPath } from 'url';
+import Ajv from 'ajv';
 interface options {
     projectName: string;
     scaffoldType: string;
