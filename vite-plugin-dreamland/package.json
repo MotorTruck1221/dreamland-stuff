@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-dreamland",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A simple Vite plugin for dreamland.js",
   "main": "dist/index.js",
   "scripts": {
@@ -19,11 +19,11 @@
     "javascript"
   ],
   "author": "MotorTruck1221",
-  "license": "MIT", 
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/motortruck1221/dreamland-stuff.git"
-  },  
+  },
   "bugs": {
     "url": "https://github.com/motortruck1221/dreamland-stuff/issues"
   },
