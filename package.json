@@ -14,13 +14,15 @@
     "vite-plugin-dreamland",
     "create-dreamland-app",
     "cli"
-  ], 
+  ],
   "author": "MotorTruck1221",
   "license": "MIT",
-  "scripts": { 
+  "scripts": {
     "format": "pnpm run format:code && pnpm run format:imports",
     "format:code": "biome format ./ --write",
     "format:imports": "biome check --apply .",
+    "build": "turbo build",
+    "version": "changeset version",
     "preinstall": "npx -y only-allow pnpm"
   },
   "dependencies": {
@@ -28,6 +30,7 @@
     "vite-plugin-dreamland": "workspace:*"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.2",
     "@biomejs/biome": "1.7.3",
     "turbo": "^1.13.3"
   }

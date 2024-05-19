@@ -12,9 +12,6 @@
         "dependsOn": ["^build", "types"],
         "outputs": ["dist"]
     },
-    "release": {
-        "dependsOn": ["build"]
-    },
     "lint": {},
     "dev": {
         "cache": false,
