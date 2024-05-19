@@ -21,4 +21,4 @@
     - An easy way to setup [dreamland.js](https://github.com/mercuryworkshop/dreamlandjs)
 
 ---
-##### All Projects in this Monorepo are licensed under the [MIT License](./LICENSE)
+##### All Projects in this Monorepo are licensed under the [MIT License](./LICENSE) ***Unless otherwise specified***
