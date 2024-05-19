@@ -1,8 +1,11 @@
 {
   "presets": [
-    ["@babel/preset-typescript", {
+    [
+      "@babel/preset-typescript",
+      {
         "allExtensions": true
-    }],
+      }
+    ],
     [
       "@babel/preset-env",
       {

@@ -14,15 +14,10 @@
               "type": "string"
             }
           },
-          "required": [
-            "name",
-            "version"
-          ]
+          "required": ["name", "version"]
         }
       },
-      "required": [
-        "dep"
-      ]
+      "required": ["dep"]
     },
     "devDeps": {
       "type": "object",
@@ -37,15 +32,10 @@
               "type": "string"
             }
           },
-          "required": [
-            "name",
-            "version"
-          ]
+          "required": ["name", "version"]
         }
       },
-      "required": [
-        "dep"
-      ]
+      "required": ["dep"]
     },
     "optDeps": {
       "type": "object",
@@ -60,15 +50,10 @@
               "type": "string"
             }
           },
-          "required": [
-            "name",
-            "version"
-          ]
+          "required": ["name", "version"]
         }
       },
-      "required": [
-        "dep"
-      ]
+      "required": ["dep"]
     },
     "folders": {
       "type": "array",
@@ -80,9 +65,7 @@
     },
     "files": {
       "type": "array",
-      "items": [
-          { "type": "string" }
-      ]
+      "items": [{ "type": "string" }]
     }
   }
 }

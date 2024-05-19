@@ -1,39 +1,32 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.7.3/schema.json",
   "files": {
-      "ignore": [
-          ".turbo",
-          "**/.turbo/**",
-          "**/dist/**",
-      ],
-      "include": ["create-dreamland-app/**", "vite-plugin-dreamland/**"]
+    "ignore": [".turbo", "**/.turbo/**", "**/dist/**"],
+    "include": ["create-dreamland-app/**", "vite-plugin-dreamland/**"]
   },
   "formatter": {
-      "indentStyle": "space",
-      "indentWidth": 2,
-      "lineWidth": 100,
-      "ignore": [
-          "pnpm-lock.yaml",
-          "package.json"
-      ],
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "ignore": ["pnpm-lock.yaml", "package.json"]
   },
   "organizeImports": { "enabled": true },
   "linter": { "enabled": false },
   "javascript": {
-      "formatter": {
-          "trailingComma": "none",
-          "quoteStyle": "single",
-          "semicolons": "always"
-      }
+    "formatter": {
+      "trailingComma": "none",
+      "quoteStyle": "single",
+      "semicolons": "always"
+    }
   },
   "json": {
-      "parser": {
-          "allowComments": true,
-          "allowTrailingCommas": true,
-      },
-      "formatter": {
-          "indentStyle": "space",
-          "trailingCommas": "none"
-      }
+    "parser": {
+      "allowComments": true,
+      "allowTrailingCommas": true
+    },
+    "formatter": {
+      "indentStyle": "space",
+      "trailingCommas": "none"
+    }
   }
 }

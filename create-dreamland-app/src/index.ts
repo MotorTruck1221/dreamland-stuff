@@ -1,7 +1,7 @@
 #! /usr/bin/env node
-import { cli } from './cli.js'
-import chalk from 'chalk'
+import chalk from 'chalk';
+import { cli } from './cli.js';
 cli().catch((err) => {
-    console.error(chalk.red('\n' + err))
-    process.exit(0) 
-})
+  console.error(chalk.red('\n' + err));
+  process.exit(0);
+});

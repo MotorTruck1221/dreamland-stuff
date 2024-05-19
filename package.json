@@ -14,15 +14,13 @@
     "vite-plugin-dreamland",
     "create-dreamland-app",
     "cli"
-  ],
-  "scripts": {
-      "format": "pnpm run format:code && pnpm run format:imports",
-      "format:code": "biome format ./ --write",
-      "format:imports": "biome check --apply ."
-  },
+  ], 
   "author": "MotorTruck1221",
   "license": "MIT",
-  "scripts": {
+  "scripts": { 
+    "format": "pnpm run format:code && pnpm run format:imports",
+    "format:code": "biome format ./ --write",
+    "format:imports": "biome check --apply .",
     "preinstall": "npx -y only-allow pnpm"
   },
   "dependencies": {
