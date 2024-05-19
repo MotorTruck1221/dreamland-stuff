@@ -3,6 +3,7 @@ import { scaffold } from './scaffold.js';
 import * as prompt from "@clack/prompts";
 import chalk from "chalk";
 import { execa } from "execa";
+import { error } from "console";
 
 async function project() {
     if (process.env.TERM_PROGRAM?.toLowerCase().includes("mintty")) {
@@ -56,6 +57,19 @@ async function project() {
             },
         })
 
+        const initGit = await prompt.group({
+            init: () => prompt.confirm({
+                message: chalk.magentaBright('Do you want a Git Repository initalized?'),
+                initialValue: false,
+                })
+            },
+            {
+                onCancel: () => {
+                    prompt.cancel(chalk.bold.red('Operation Canceled'));
+                    process.exit(0);
+                }
+        });
+
         const installDeps = await prompt.group({
             install: () => prompt.confirm({
                 message: chalk.red('Do you want to install dependencies?'),
@@ -98,6 +112,27 @@ async function project() {
         scaffoldSpinner.message(chalk.yellow('Scaffolding...'));
         await scaffold({ projectName: inital.path, scaffoldType: inital.type, tsScaffold: extraStuff?.langType, extraTools: extraStuff?.tools })
         scaffoldSpinner.stop(chalk.bold.green('Scaffold Complete!'));
+        if (initGit.init === true) {
+            const gitSpinner = prompt.spinner();
+            gitSpinner.start();
+            gitSpinner.message(chalk.yellow('Initalizing a Git repo'));
+            try {
+                await execa('git', ['init'], { cwd: inital.path });
+                await execa('git', ['add', '-A'], { cwd: inital.path });
+                await execa('git',
+                            [
+                                'commit',
+                                '-m',
+                                'Inital Commit from Create Dreamland App',
+                                '--author="create-dreamland-app[bot] <example@example.com>"'
+                            ],
+                            { cwd: inital.path }
+                           )
+            }
+            catch (err: any) {
+                console.log(chalk.yellow.bold(`Initalizing of Git repo failed for reason: ${err.cause}`));
+            }
+        }
         if (installDeps.install === true) {
             const pmSpinner = prompt.spinner();
             pmSpinner.start();
@@ -105,7 +140,7 @@ async function project() {
             try {
                 await execa(packageManager, ['install'], { cwd: inital.path })
             } catch (err: any) {
-                console.log(chalk.red(`\n${packageManager} has failed to install dependencies. Defaulting to npm`));
+                console.log(chalk.yellow.bold(`\n${packageManager} has failed to install dependencies. Defaulting to npm`));
                 packageManager = "npm";
                 await execa('npm', ['install'], { cwd: inital.path });
             }
