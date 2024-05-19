@@ -129,9 +129,7 @@ async function project() {
                             { cwd: inital.path }
                            )
             }
-            catch (err: any) {
-                console.log(chalk.yellow.bold(`Initalizing of Git repo failed for reason: ${err.cause}`));
-            }
+            catch (err: any) {}
         }
         if (installDeps.install === true) {
             const pmSpinner = prompt.spinner();
