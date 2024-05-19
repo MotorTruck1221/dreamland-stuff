@@ -36,10 +36,10 @@
     "@babel/preset-typescript": "^7.24.1",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.12.10",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "@babel/plugin-syntax-import-attributes": "^7.24.1"
   },
   "dependencies": {
-    "@babel/plugin-syntax-import-attributes": "^7.24.1",
     "@clack/core": "^0.3.4",
     "@clack/prompts": "^0.7.0",
     "ajv": "^8.13.0",
@@ -48,7 +48,6 @@
     "execa": "^9.1.0",
     "fs-extra": "^11.2.0",
     "giget": "^1.2.3",
-    "ora": "^8.0.1",
     "sort-package-json": "^2.10.0"
   }
 }

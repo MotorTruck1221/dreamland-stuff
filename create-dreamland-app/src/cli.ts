@@ -2,7 +2,6 @@ import { Command } from "commander";
 import { scaffold } from './scaffold.js';
 import * as prompt from "@clack/prompts";
 import chalk from "chalk";
-import { count } from "node:console";
 import { execa } from "execa";
 
 async function project() {

@@ -2,13 +2,22 @@ import chalk from "chalk";
 import { downloadTemplate } from "giget";
 import fs from 'fs-extra';
 import sortPackageJson from 'sort-package-json';
-import patchSchema from './patches.schema.json' with { type: "json" };
-import Ajv from "ajv";
+const patchFile = fs.readFileSync(path.join(path.resolve() + '/dist/patches.schema.json'), 'utf-8')
+const patchSchema = JSON.parse(patchFile);
+import Ajv, { JSONSchemaType } from "ajv";
+import path from "path";
 interface options {
     projectName: string,
     scaffoldType: string,
     tsScaffold?: boolean,
     extraTools?: string[],
+}
+interface PatchSchema {
+    devDeps?: { [key: string]: { name: string, version: string } };
+    optDeps?: { [key: string]: { name: string, version: string } };
+    deps?: { [key: string]: { name: string, version: string } };
+    folders?: string[];
+    files?: string[];
 }
 
 async function template(template: string, projectName: string, extraTools?: string[]) {
@@ -27,7 +36,7 @@ async function template(template: string, projectName: string, extraTools?: stri
                     cwd: projectName + '/' + extraTools[i],
                     dir: '.'
                 })
-                const obj = JSON.parse(fs.readFileSync(`${projectName}/${extraTools[i]}/patch.json`, 'utf-8'));
+                const obj: PatchSchema = JSON.parse(fs.readFileSync(`${projectName}/${extraTools[i]}/patch.json`, 'utf-8'));
                 //validate the object to the schema
                 const ajv = new Ajv({ strict: false });
                 const isDataValid = ajv.validate(patchSchema, obj);
