@@ -1,14 +1,14 @@
 {
-  "deps": {
-    "dep": {
-      "name": "dreamland-router",
-      "version": "https://github.com/mercuryworkshop/dreamland-router"
+    "deps": {
+        "dep": {
+            "name": "dreamland-router",
+            "version": "https://github.com/mercuryworkshop/dreamland-router"
+        },
+        "dep1": {
+            "name": "rollup-plugin-typescript2",
+            "version": "^0.36.0"
+        }
     },
-    "dep1": {
-      "name": "rollup-plugin-typescript2",
-      "version": "^0.36.0"
-    }
-  },
-  "folders": ["src/routes/"],
-  "files": ["src/router.jsx", "src/main.jsx", "src/routes/home.jsx"]
+    "folders": ["src/routes/"],
+    "files": ["src/router.jsx", "src/main.jsx", "src/routes/home.jsx"]
 }

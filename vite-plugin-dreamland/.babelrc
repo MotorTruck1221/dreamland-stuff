@@ -1,19 +1,19 @@
 {
-  "presets": [
-    [
-      "@babel/preset-typescript",
-      {
-        "allExtensions": true
-      }
+    "presets": [
+        [
+            "@babel/preset-typescript",
+            {
+                "allExtensions": true
+            }
+        ],
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "node": "18"
+                }
+            }
+        ]
     ],
-    [
-      "@babel/preset-env",
-      {
-        "targets": {
-          "node": "18"
-        }
-      }
-    ]
-  ],
-  "comments": true
+    "comments": true
 }

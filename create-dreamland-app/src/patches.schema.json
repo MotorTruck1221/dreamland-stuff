@@ -1,71 +1,71 @@
 {
-  "type": "object",
-  "properties": {
-    "deps": {
-      "type": "object",
-      "properties": {
-        "dep": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
+    "type": "object",
+    "properties": {
+        "deps": {
+            "type": "object",
+            "properties": {
+                "dep": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "version": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["name", "version"]
+                }
             },
-            "version": {
-              "type": "string"
-            }
-          },
-          "required": ["name", "version"]
-        }
-      },
-      "required": ["dep"]
-    },
-    "devDeps": {
-      "type": "object",
-      "properties": {
-        "dep": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
+            "required": ["dep"]
+        },
+        "devDeps": {
+            "type": "object",
+            "properties": {
+                "dep": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "version": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["name", "version"]
+                }
             },
-            "version": {
-              "type": "string"
-            }
-          },
-          "required": ["name", "version"]
-        }
-      },
-      "required": ["dep"]
-    },
-    "optDeps": {
-      "type": "object",
-      "properties": {
-        "dep": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
+            "required": ["dep"]
+        },
+        "optDeps": {
+            "type": "object",
+            "properties": {
+                "dep": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "version": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["name", "version"]
+                }
             },
-            "version": {
-              "type": "string"
-            }
-          },
-          "required": ["name", "version"]
+            "required": ["dep"]
+        },
+        "folders": {
+            "type": "array",
+            "items": [
+                {
+                    "type": "string"
+                }
+            ]
+        },
+        "files": {
+            "type": "array",
+            "items": [{ "type": "string" }]
         }
-      },
-      "required": ["dep"]
-    },
-    "folders": {
-      "type": "array",
-      "items": [
-        {
-          "type": "string"
-        }
-      ]
-    },
-    "files": {
-      "type": "array",
-      "items": [{ "type": "string" }]
     }
-  }
 }

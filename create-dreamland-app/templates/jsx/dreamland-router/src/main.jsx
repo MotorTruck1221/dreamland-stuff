@@ -1,13 +1,13 @@
 import 'dreamland/dev';
 import { Router } from './router.jsx';
 const App = function () {
-  this.mount = () => {
-    Router.render(this.root);
-  };
+    this.mount = () => {
+        Router.render(this.root);
+    };
 
-  return <div id="app" />;
+    return <div id="app" />;
 };
 
 window.addEventListener('load', () => {
-  document.getElementById('app').replaceWith(<App />);
+    document.getElementById('app').replaceWith(<App />);
 });

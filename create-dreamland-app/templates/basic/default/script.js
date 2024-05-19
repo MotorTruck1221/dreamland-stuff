@@ -1,6 +1,6 @@
 function App() {
-  this.counter = 0;
-  return html`
+    this.counter = 0;
+    return html`
 		<div>
 			<button on:click=${() => this.counter++}>Click me!</button>
 			<p>${use(this.counter)}</p>
