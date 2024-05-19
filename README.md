@@ -14,11 +14,13 @@
 ---
 - [Vite Plugin Dreamland](./vite-plugin-dreamland/)
     - A relatively simple plugin for [dreamland.js](https://github.com/mercuryworkshop/dreamlandjs)
+    - [npm](https://www.npmjs.com/package/vite-plugin-dreamland)
 
 <br />
 
 - [Create Dreamland App](./create-dreamland-app/)
     - An easy way to setup [dreamland.js](https://github.com/mercuryworkshop/dreamlandjs)
+    - [npm](https://www.npmjs.com/package/create-dreamland-app)
 
 ---
 ##### All Projects in this Monorepo are licensed under the [MIT License](./LICENSE) ***Unless otherwise specified***
