@@ -130,6 +130,7 @@ async function project() {
                            )
             }
             catch (err: any) {}
+            gitSpinner.stop(chalk.bold.green('Git Repo Successfully Intitalized!'));
         }
         if (installDeps.install === true) {
             const pmSpinner = prompt.spinner();
