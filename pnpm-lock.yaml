@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@changesets/cli':
-        specifier: ^2.27.2
-        version: 2.27.2
       create-dreamland-app:
         specifier: workspace:*
         version: link:create-dreamland-app
@@ -21,6 +18,9 @@ importers:
       '@biomejs/biome':
         specifier: 1.7.3
         version: 1.7.3
+      '@changesets/cli':
+        specifier: ^2.27.2
+        version: 2.27.2
       turbo:
         specifier: ^1.13.3
         version: 1.13.3

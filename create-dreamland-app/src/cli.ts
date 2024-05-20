@@ -1,11 +1,56 @@
-import { error } from 'console';
 import * as prompt from '@clack/prompts';
 import chalk from 'chalk';
 import { Command } from 'commander';
 import { execa } from 'execa';
 import { scaffold } from './scaffold.js';
 
+interface CliFlags {
+    git: boolean,
+    install: boolean,
+    default: boolean 
+}
+
+interface CliResults {
+    dir: string,
+    flags: CliFlags,
+}
+
+const defaultOpts: CliResults = {
+    dir: "cda-project",
+    flags: {
+        git: false,
+        install: false, 
+        default: false,
+    }
+}
+
 async function project() {
+    const cliResults = defaultOpts;
+    const program = new Command();
+    program.name("Create Dreamland App");
+    program.description("A CLI to easily get started with dreamland.js");
+    program.argument("[dir]", "The name of the program, and the directory to create");
+    program.option("--git", "Tell the CLI to create a Git repository", false);
+    program.option("--install", "Tell the CLI to install dependencies", false);
+    program.option("-y, --default", "Skip any questions a bootstrap with default options");
+    program.parse(process.argv);
+    const providedName = program.args[0];
+    if (providedName) {
+        cliResults.dir = providedName;
+    }
+    cliResults.flags = program.opts();
+    if (cliResults.flags.default) {
+        const defaultOptSpinner = prompt.spinner();
+        defaultOptSpinner.start();
+        defaultOptSpinner.message(chalk.yellow('Scaffolding using ALL default options'));
+        await scaffold({
+            projectName: providedName ?? "cda-project",
+            scaffoldType: "tsx/jsx",
+            tsScaffold: true
+        });
+        defaultOptSpinner.stop(chalk.green.bold("Scaffold Complete!"));
+        return prompt.note(`cd ${providedName ?? "cda-project"} \nnpm run dev`, chalk.bold.magenta('Done Creating. Now Run:'));
+    }
     if (process.env.TERM_PROGRAM?.toLowerCase().includes('mintty')) {
         console.log(
             chalk.yellow(
@@ -16,11 +61,13 @@ async function project() {
     }
     const inital = await prompt.group(
         {
-            path: () =>
+            ...(!providedName && { 
+                path: () =>
                 prompt.text({
                     message: chalk.green('Where would you like to create your project?'),
                     placeholder: 'project-name'
                 }),
+            }),
             type: () =>
                 prompt.select({
                     message: chalk.magenta(`How Would you like to use dreamland?`),
@@ -77,11 +124,13 @@ async function project() {
 
         const initGit = await prompt.group(
             {
-                init: () =>
+                ...(!cliResults.flags.git && {
+                    init: () =>
                     prompt.confirm({
                         message: chalk.green('Do you want a Git Repository initalized?'),
                         initialValue: false
                     })
+                }),
             },
             {
                 onCancel: () => {
@@ -93,11 +142,13 @@ async function project() {
 
         const installDeps = await prompt.group(
             {
-                install: () =>
+                ...(!cliResults.flags.install && { 
+                    install: () =>
                     prompt.confirm({
                         message: chalk.red('Do you want to install dependencies?'),
                         initialValue: false
-                    })
+                    }),
+                }),
             },
             {
                 onCancel: () => {
@@ -108,7 +159,7 @@ async function project() {
         );
 
         let packageManager = 'npm';
-        if (installDeps.install === true) {
+        if (installDeps.install === true || cliResults.flags.install === true) {
             const pm = await prompt.group(
                 {
                     manager: () =>
@@ -138,13 +189,13 @@ async function project() {
         scaffoldSpinner.start();
         scaffoldSpinner.message(chalk.yellow('Scaffolding...'));
         await scaffold({
-            projectName: inital.path,
+            projectName: inital.path ?? cliResults.dir,
             scaffoldType: inital.type,
             tsScaffold: extraStuff?.langType,
             extraTools: extraStuff?.tools
         });
         scaffoldSpinner.stop(chalk.bold.green('Scaffold Complete!'));
-        if (initGit.init === true) {
+        if (initGit.init === true || cliResults.flags.git === true) {
             const gitSpinner = prompt.spinner();
             gitSpinner.start();
             gitSpinner.message(chalk.yellow('Initalizing a Git repo'));
@@ -164,7 +215,7 @@ async function project() {
             } catch (err: any) {}
             gitSpinner.stop(chalk.bold.green('Git Repo Successfully Intitalized!'));
         }
-        if (installDeps.install === true) {
+        if (installDeps.install === true || cliResults.flags.install === true) {
             const pmSpinner = prompt.spinner();
             pmSpinner.start();
             pmSpinner.message(chalk.yellow('Installing dependencies...'));
@@ -181,16 +232,16 @@ async function project() {
             }
             pmSpinner.stop(chalk.bold.green('Dependencies Installed!'));
         }
-        switch (installDeps.install) {
+        switch (installDeps.install || cliResults.flags.install) {
             case true:
                 prompt.note(
-                    `cd ${inital.path} \n${packageManager} run dev`,
+                    `cd ${inital.path ?? providedName} \n${packageManager} run dev`,
                     chalk.bold.magenta('Done Creating. Now Run:')
                 );
                 break;
             case false:
                 prompt.note(
-                    `cd ${inital.path} \n${packageManager} install \n${packageManager} run dev`,
+                    `cd ${inital.path ?? providedName} \n${packageManager} install \n${packageManager} run dev`,
                     chalk.bold.magenta('Done Creating. Now Run:')
                 );
                 break;
@@ -201,7 +252,7 @@ async function project() {
         spinner.start();
         spinner.message(chalk.yellow('Scaffolding Project...'));
         await scaffold({
-            projectName: inital.path,
+            projectName: inital.path ?? providedName,
             scaffoldType: inital.type,
             tsScaffold: extraStuff?.langType,
             extraTools: extraStuff?.tools
