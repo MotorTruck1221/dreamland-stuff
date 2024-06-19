@@ -48,8 +48,8 @@ async function project() {
             scaffoldType: "tsx/jsx",
             tsScaffold: true
         });
-        defaultOptSpinner.stop(chalk.green.bold("Scaffold Complete!"));
-        return prompt.note(`cd ${providedName ?? "cda-project"} \nnpm run dev`, chalk.bold.magenta('Done Creating. Now Run:'));
+        defaultOptSpinner.stop(chalk.green.bold("Scaffold complete!"));
+        return prompt.note(`cd ${providedName ?? "cda-project"} \nnpm run dev`, chalk.bold.magenta('Done creating. Now run:'));
     }
     if (process.env.TERM_PROGRAM?.toLowerCase().includes('mintty')) {
         console.log(
@@ -57,7 +57,7 @@ async function project() {
                 'WARNING: It looks like you are using MinTTY which is not interactive. This is most likely because you are using Git Bash. \nIf you are using Git Bash, please use it from another terminal like Windows Terminal. '
             )
         );
-        throw new Error('Terminal Session is Non-Interactive');
+        throw new Error('Terminal session is Non-Interactive');
     }
     const inital = await prompt.group(
         {
@@ -70,7 +70,7 @@ async function project() {
             }),
             type: () =>
                 prompt.select({
-                    message: chalk.magenta(`How Would you like to use dreamland?`),
+                    message: chalk.magenta(`How would you like to use dreamland?`),
                     initialValue: 'tsx/jsx',
                     maxItems: 2,
                     options: [
@@ -81,7 +81,7 @@ async function project() {
         },
         {
             onCancel: () => {
-                prompt.cancel(chalk.bold.red('Operation Canceled'));
+                prompt.cancel(chalk.bold.red('Operation canceled'));
                 process.exit(0);
             }
         }
@@ -116,7 +116,7 @@ async function project() {
             },
             {
                 onCancel: () => {
-                    prompt.cancel(chalk.bold.red('Operation Canceled'));
+                    prompt.cancel(chalk.bold.red('Operation canceled'));
                     process.exit(0);
                 }
             }
@@ -127,14 +127,14 @@ async function project() {
                 ...(!cliResults.flags.git && {
                     init: () =>
                     prompt.confirm({
-                        message: chalk.green('Do you want a Git Repository initalized?'),
+                        message: chalk.green('Do you want a Git repository initalized?'),
                         initialValue: false
                     })
                 }),
             },
             {
                 onCancel: () => {
-                    prompt.cancel(chalk.bold.red('Operation Canceled'));
+                    prompt.cancel(chalk.bold.red('Operation canceled'));
                     process.exit(0);
                 }
             }
@@ -152,7 +152,7 @@ async function project() {
             },
             {
                 onCancel: () => {
-                    prompt.cancel(chalk.bold.red('Operation Canceled'));
+                    prompt.cancel(chalk.bold.red('Operation canceled'));
                     process.exit(0);
                 }
             }
@@ -194,7 +194,7 @@ async function project() {
             tsScaffold: extraStuff?.langType,
             extraTools: extraStuff?.tools
         });
-        scaffoldSpinner.stop(chalk.bold.green('Scaffold Complete!'));
+        scaffoldSpinner.stop(chalk.bold.green('Scaffold complete!'));
         if (initGit.init === true || cliResults.flags.git === true) {
             const gitSpinner = prompt.spinner();
             gitSpinner.start();
@@ -213,7 +213,7 @@ async function project() {
                     { cwd: inital.path }
                 );
             } catch (err: any) {}
-            gitSpinner.stop(chalk.bold.green('Git Repo Successfully Intitalized!'));
+            gitSpinner.stop(chalk.bold.green('Git repo successfully intitalized!'));
         }
         if (installDeps.install === true || cliResults.flags.install === true) {
             const pmSpinner = prompt.spinner();
@@ -230,19 +230,19 @@ async function project() {
                 packageManager = 'npm';
                 await execa('npm', ['install'], { cwd: inital.path });
             }
-            pmSpinner.stop(chalk.bold.green('Dependencies Installed!'));
+            pmSpinner.stop(chalk.bold.green('Dependencies installed!'));
         }
         switch (installDeps.install || cliResults.flags.install) {
             case true:
                 prompt.note(
                     `cd ${inital.path ?? providedName} \n${packageManager} run dev`,
-                    chalk.bold.magenta('Done Creating. Now Run:')
+                    chalk.bold.magenta('Done creating. Now run:')
                 );
                 break;
             case false:
                 prompt.note(
                     `cd ${inital.path ?? providedName} \n${packageManager} install \n${packageManager} run dev`,
-                    chalk.bold.magenta('Done Creating. Now Run:')
+                    chalk.bold.magenta('Done creating. Now run:')
                 );
                 break;
         }
@@ -250,7 +250,7 @@ async function project() {
     if (inital.type === 'basic') {
         const spinner = prompt.spinner();
         spinner.start();
-        spinner.message(chalk.yellow('Scaffolding Project...'));
+        spinner.message(chalk.yellow('Scaffolding project...'));
         await scaffold({
             projectName: inital.path ?? providedName,
             scaffoldType: inital.type,
