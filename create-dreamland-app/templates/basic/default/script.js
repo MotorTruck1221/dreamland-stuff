@@ -67,7 +67,7 @@ function App() {
             <p class=${getStarted}>Edit src/index.jsx to modfiy this page</p>
             <br />
             <div class=${buttonRow}>
-                <button class=${counterButton} on:click={() => this.counter++}>Count is: {use(this.counter)}</button>
+                <button class=${counterButton} on:click=${() => this.counter++}>Count is: ${use(this.counter)}</button>
                 <a class=${docsButton} href="https://dreamland.js.org/learn" target="_blank" rel="noreferrer noopener">Get Started</a>
             </div>
         </div>
