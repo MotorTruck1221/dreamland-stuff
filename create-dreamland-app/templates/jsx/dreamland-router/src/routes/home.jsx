@@ -72,7 +72,6 @@ const Home = function () {
                 <a class={docsButton} href="https://dreamland.js.org/learn" target="_blank" rel="noreferrer noopener">Get Started</a>
             </div>
         </div>
-
     );
 };
 
