@@ -65,7 +65,7 @@ const Home = function () {
          <div class={baseStyle}>
             <img class={img} src="/logo.svg"></img>
             <h1 class={title}>Dreamland.js</h1>
-            <p class={getStarted}>Edit src/index.jsx to modfiy this page</p>
+            <p class={getStarted}>Edit src/routes/home.jsx to modfiy this page</p>
             <br />
             <div class={buttonRow}>
                 <button class={counterButton} on:click={() => this.counter++}>Count is: {use(this.counter)}</button>

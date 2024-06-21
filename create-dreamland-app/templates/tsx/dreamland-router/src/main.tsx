@@ -1,5 +1,14 @@
 import 'dreamland/dev';
 import { Router } from './router';
+
+//Used to style anything outside of components
+import './index.css';
+
+const base = css`
+    width: 100%;
+    height: 100%;
+`
+
 // typescript syntax for defining components
 const App: Component<
     {
@@ -13,7 +22,7 @@ const App: Component<
     this.mount = () => {
         Router.render(this.root);
     };
-    return <div id="app" />;
+    return <div class={base} id="app" />;
 };
 
 window.addEventListener('load', () => {
