@@ -1,4 +1,4 @@
-import { Redirect, Route } from 'dreamland-router';
+import { Route } from 'dreamland-router';
 import Home from './routes/home';
 export const Router = (
     //@ts-ignore temp fix
