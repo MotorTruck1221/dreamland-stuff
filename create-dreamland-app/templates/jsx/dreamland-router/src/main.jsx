@@ -1,4 +1,9 @@
+//You may want to change this to just 'dreamland' when building for prod
 import 'dreamland/dev';
+
+//Used to style anything outside of components
+import './index.css';
+
 import { Router } from './router.jsx';
 const App = function () {
     this.mount = () => {
