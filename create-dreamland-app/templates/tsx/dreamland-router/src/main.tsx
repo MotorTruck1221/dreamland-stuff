@@ -1,5 +1,5 @@
 import 'dreamland/dev';
-import { Router, Route } from 'dreamland-router';
+import { Route, Router } from 'dreamland-router';
 import Home from './routes/home';
 
 //base styles

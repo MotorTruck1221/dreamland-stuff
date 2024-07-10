@@ -5,34 +5,34 @@ import { execa } from 'execa';
 import { scaffold } from './scaffold.js';
 
 interface CliFlags {
-    git: boolean,
-    install: boolean,
-    default: boolean 
+    git: boolean;
+    install: boolean;
+    default: boolean;
 }
 
 interface CliResults {
-    dir: string,
-    flags: CliFlags,
+    dir: string;
+    flags: CliFlags;
 }
 
 const defaultOpts: CliResults = {
-    dir: "cda-project",
+    dir: 'cda-project',
     flags: {
         git: false,
-        install: false, 
-        default: false,
+        install: false,
+        default: false
     }
-}
+};
 
 async function project() {
     const cliResults = defaultOpts;
     const program = new Command();
-    program.name("Create Dreamland App");
-    program.description("A CLI to easily get started with dreamland.js");
-    program.argument("[dir]", "The name of the program, and the directory to create");
-    program.option("--git", "Tell the CLI to create a Git repository", false);
-    program.option("--install", "Tell the CLI to install dependencies", false);
-    program.option("-y, --default", "Skip any questions a bootstrap with default options");
+    program.name('Create Dreamland App');
+    program.description('A CLI to easily get started with dreamland.js');
+    program.argument('[dir]', 'The name of the program, and the directory to create');
+    program.option('--git', 'Tell the CLI to create a Git repository', false);
+    program.option('--install', 'Tell the CLI to install dependencies', false);
+    program.option('-y, --default', 'Skip any questions a bootstrap with default options');
     program.parse(process.argv);
     const providedName = program.args[0];
     if (providedName) {
@@ -44,12 +44,15 @@ async function project() {
         defaultOptSpinner.start();
         defaultOptSpinner.message(chalk.yellow('Scaffolding using ALL default options'));
         await scaffold({
-            projectName: providedName ?? "cda-project",
-            scaffoldType: "tsx/jsx",
+            projectName: providedName ?? 'cda-project',
+            scaffoldType: 'tsx/jsx',
             tsScaffold: true
         });
-        defaultOptSpinner.stop(chalk.green.bold("Scaffold complete!"));
-        return prompt.note(`cd ${providedName ?? "cda-project"} \nnpm run dev`, chalk.bold.magenta('Done creating. Now run:'));
+        defaultOptSpinner.stop(chalk.green.bold('Scaffold complete!'));
+        return prompt.note(
+            `cd ${providedName ?? 'cda-project'} \nnpm run dev`,
+            chalk.bold.magenta('Done creating. Now run:')
+        );
     }
     if (process.env.TERM_PROGRAM?.toLowerCase().includes('mintty')) {
         console.log(
@@ -61,12 +64,12 @@ async function project() {
     }
     const inital = await prompt.group(
         {
-            ...(!providedName && { 
+            ...(!providedName && {
                 path: () =>
-                prompt.text({
-                    message: chalk.green('Where would you like to create your project?'),
-                    placeholder: 'project-name'
-                }),
+                    prompt.text({
+                        message: chalk.green('Where would you like to create your project?'),
+                        placeholder: 'project-name'
+                    })
             }),
             type: () =>
                 prompt.select({
@@ -126,11 +129,11 @@ async function project() {
             {
                 ...(!cliResults.flags.git && {
                     init: () =>
-                    prompt.confirm({
-                        message: chalk.green('Do you want a Git repository initalized?'),
-                        initialValue: false
-                    })
-                }),
+                        prompt.confirm({
+                            message: chalk.green('Do you want a Git repository initalized?'),
+                            initialValue: false
+                        })
+                })
             },
             {
                 onCancel: () => {
@@ -142,13 +145,13 @@ async function project() {
 
         const installDeps = await prompt.group(
             {
-                ...(!cliResults.flags.install && { 
+                ...(!cliResults.flags.install && {
                     install: () =>
-                    prompt.confirm({
-                        message: chalk.red('Do you want to install dependencies?'),
-                        initialValue: false
-                    }),
-                }),
+                        prompt.confirm({
+                            message: chalk.red('Do you want to install dependencies?'),
+                            initialValue: false
+                        })
+                })
             },
             {
                 onCancel: () => {
@@ -241,7 +244,9 @@ async function project() {
                 break;
             case false:
                 prompt.note(
-                    `cd ${inital.path ?? providedName} \n${packageManager} install \n${packageManager} run dev`,
+                    `cd ${
+                        inital.path ?? providedName
+                    } \n${packageManager} install \n${packageManager} run dev`,
                     chalk.bold.magenta('Done creating. Now run:')
                 );
                 break;
