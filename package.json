@@ -13,6 +13,7 @@
     "vite-plugin",
     "vite-plugin-dreamland",
     "create-dreamland-app",
+    "create-dreamland",
     "cli"
   ],
   "author": "MotorTruck1221",

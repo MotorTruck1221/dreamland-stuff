@@ -21,6 +21,8 @@
 - [Create Dreamland App](./create-dreamland-app/)
     - An easy way to setup [dreamland.js](https://github.com/mercuryworkshop/dreamlandjs)
     - [npm](https://www.npmjs.com/package/create-dreamland-app)
+    - [Create Dreamland](./create-dreamland) - An alias for `create-dreamland-app`
+        - [npm](https://www.npmjs.com/package/create-dreamland)
 
 ---
 ##### All Projects in this Monorepo are licensed under the [MIT License](./LICENSE) ***Unless otherwise specified***
