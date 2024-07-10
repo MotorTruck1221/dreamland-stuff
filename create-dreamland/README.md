@@ -7,31 +7,29 @@ Easily setup [dreamland.js](https://github.com/mercuryworkshop/dreamlandjs)
 
 ## Usage
 
-![exampleOfCDA](https://raw.githubusercontent.com/MotorTruck1221/dreamland-stuff/main/create-dreamland-app/example.gif)
-
 ### npx
 ```bash
-npx create-dreamland-app@latest
+npx create-dreamland@latest
 ```
 
 ### npm
 ```bash
-npm init dreamland-app
+npm init dreamland
 ```
 
 ### yarn
 ```bash
-yarn create dreamland-app
+yarn create dreamland
 ```
 
 ### pnpm
 ```bash
-pnpm create dreamland-app
+pnpm create dreamland
 ```
 
 ### pnpm (dlx)
 ```bash
-pnpm dlx create-dreamland-app@latest
+pnpm dlx create-dreamlandp@latest
 ```
 
 ## Flags and Extras
