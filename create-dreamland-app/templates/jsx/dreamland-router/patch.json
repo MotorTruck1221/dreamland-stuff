@@ -10,5 +10,5 @@
         }
     },
     "folders": ["src/routes/"],
-    "files": ["src/router.jsx", "src/main.jsx", "src/routes/home.jsx"]
+    "files": ["src/main.jsx", "src/routes/home.jsx"]
 }
