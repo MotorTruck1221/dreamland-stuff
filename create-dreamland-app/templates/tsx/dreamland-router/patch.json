@@ -10,5 +10,5 @@
         }
     },
     "folders": ["src/routes/"],
-    "files": ["src/router.tsx", "src/routes/home.tsx"]
+    "files": ["src/main.tsx", "src/routes/home.tsx"]
 }
