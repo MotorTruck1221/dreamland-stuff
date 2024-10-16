@@ -8,4 +8,5 @@ let router = new Router(
     <Route>
         <Route path="" show={<Home />} />
     </Route>
-).mount(document.getElementById('app')!);
+)
+router.mount(document.getElementById('app')!);
